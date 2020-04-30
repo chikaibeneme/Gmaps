@@ -1,0 +1,92 @@
+<article class="page">
+  {% include 'masthead', title: page.title %}
+
+  <div class="page-content">
+    {{ page.content }}
+
+    
+    
+    
+   <div class="page-contact-contactbar">
+   
+      
+     
+
+        
+    <div class="contactbar-map contactpage-map">
+      
+      <!--<iframe class="storesMap" src="https://www.google.com/maps/d/embed?mid=1-vC5nZreKfujoNZ6GB-8ltvOOKzjsFwZ"></iframe>-->
+      <div id="map"></div>
+       <!--Load the API from the specified URL
+      * The async attribute allows the browser to render the page while the API loads
+      * The key parameter will contain your own API key (which is not needed for this tutorial)
+      * The callback parameter executes the initMap() function
+      -->
+      <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6S0j8oZOR_Lg-6QXY5k01maczifyi2pI&callback=initMap">
+      </script>
+      <script>
+        // Initialize and add the map
+        function initMap() {
+          // The location of Uluru
+          var uluru = {lat: -37.870, lng: 144.980};
+          // The map, centered at Uluru
+          var map = new google.maps.Map(
+              document.getElementById('map'), {zoom: 11, center: uluru,
+              zoomControl: true,
+              scaleControl: true
+        });
+
+ var contentString = '227A BARKLY ST. ST. KILDA VIC. 3182';
+ var contentString2 = '273 SMITH ST. FITZROY VIC. 3065';
+ var contentString3 = '612 HAMPTON STREET. BRIGHTON VIC. 3186';
+
+var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+var infowindow2 = new google.maps.InfoWindow({
+          content: contentString2
+        });
+var infowindow3 = new google.maps.InfoWindow({
+          content: contentString3
+        });
+
+          // The marker, positioned at Uluru
+          var marker = new google.maps.Marker({position: uluru, map: map});
+ marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+          var marker2 = new google.maps.Marker({position: {lat: -37.800, lng: 144.983}, map: map});
+ marker2.addListener('click', function() {
+          infowindow2.open(map, marker2);
+        });
+          var marker3 = new google.maps.Marker({position: {lat: -37.928, lng: 145.004}, map: map});
+ marker3.addListener('click', function() {
+          infowindow3.open(map, marker3);
+        });
+        }
+
+
+
+      </script>
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  .page-content img[style*="right"] {
+     margin-left: 0px;
+  }
+
+  /* Set the size of the div element that contains the map */
+  #map {
+    height: 400px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+  }
+
+.page-contact-contactbar .contactbar-map {
+  
+    margin-top: 50px;
+}
+</style>
